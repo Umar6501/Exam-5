@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.scss";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header>
@@ -12,7 +13,9 @@ const Header = () => {
       </div>
       <div className="logOut">
         <img src="/back.svg" alt="" />
-        <h4>Выйти</h4>
+        <Link to={"/Login"}>
+          <h4>Выйти</h4>
+        </Link>
       </div>
     </header>
   );

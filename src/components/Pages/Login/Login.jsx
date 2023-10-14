@@ -37,7 +37,7 @@ const Login = () => {
             aria-describedby="basic-addon1"
           />
         </InputGroup>
-        <Link to={"/"} className="w-100 text-center">
+        <Link to={"/Home"} className="w-100 text-center">
           <Button className="w-25" variant="primary">
             Login
           </Button>
