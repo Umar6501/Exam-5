@@ -88,6 +88,7 @@ const AddCart = () => {
                     }
                   />
                 </InputGroup>
+
                 <InputGroup size="lg">
                   <InputGroup.Text id="inputGroup-sizing-lg">
                     Цена
@@ -96,13 +97,12 @@ const AddCart = () => {
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
                     name="price"
+                    className="brend-input-group"
                     required
                     onChange={(e) =>
                       setValues({ ...values, price: e.target.value })
                     }
                   />
-                </InputGroup>
-                <InputGroup size="lg">
                   <InputGroup.Text id="inputGroup-sizing-lg">
                     Цена со скидкой
                   </InputGroup.Text>
