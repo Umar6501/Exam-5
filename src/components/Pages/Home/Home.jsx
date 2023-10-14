@@ -106,65 +106,8 @@ const Home = () => {
                 </Link>
 
                 <p className="b-item7">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    // fill="none"
-                  >
-                    <g clipPath="url(#clip0_171_7786)">
-                      <path
-                        d="M15.5566 1.01258C16.148 1.60404 16.1415 2.56501 15.542 3.14832L8.93672 9.57508C8.65668 9.84755 8.28139 10 7.89068 10L5.99999 9.99999L5.99999 8.11441C5.99999 7.72067 6.15481 7.34272 6.43102 7.06213L12.8983 0.492289C13.4827 -0.101376 14.4389 -0.105136 15.0279 0.483912L15.5566 1.01258Z"
-                        // fill="#9999EE"
-                      />
-                      <path
-                        d="M7 1H4H3C1.89543 1 1 1.89543 1 3V13C1 14.1046 1.89543 15 3 15H13C14.1046 15 15 14.1046 15 13V10"
-                        stroke="#5B5CE2"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_171_7786">
-                        <rect
-                          width="16"
-                          height="16"
-                          //  fill="white"
-                        />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                  <svg
-                    onClick={() => deletePr(post.id)}
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                  >
-                    <g clipPath="url(#clip0_171_7778)">
-                      <path
-                        d="M2 6V14.5C2 15.3284 2.67157 16 3.5 16H12.5C13.3284 16 14 15.3284 14 14.5V6H2Z"
-                        // fill="#5B5CE2"
-                      />
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M11 2V1C11 0.447715 10.5523 0 10 0H6C5.44772 0 5 0.447715 5 1V2H0.5C0.223858 2 0 2.22386 0 2.5V3.5C0 3.77614 0.223858 4 0.5 4H15.5C15.7761 4 16 3.77614 16 3.5V2.5C16 2.22386 15.7761 2 15.5 2H11Z"
-                        // fill="#9999EE"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_171_7778">
-                        <rect
-                          width="16"
-                          height="16"
-                          // fill="white"
-                        />
-                      </clipPath>
-                    </defs>
-                  </svg>
+                  <img src="/Редактировать.svg" alt="" />
+                  <img onClick={() => deletePr(post.id)} src="/Корзина.svg" />
                 </p>
               </div>
             ))}
