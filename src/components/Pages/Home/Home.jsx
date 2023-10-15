@@ -120,24 +120,7 @@ const Home = () => {
                   <Link to={`/EditCart/${post.id}`}>
                     <img src="/Редактировать.svg" alt="" />
                   </Link>
-                  <img
-                    onClick={() =>
-                      deletePr(
-                        post.id,
-                        toast("🗑️ удаляем!", {
-                          position: "bottom-right",
-                          autoClose: 5000,
-                          hideProgressBar: false,
-                          closeOnClick: true,
-                          pauseOnHover: true,
-                          draggable: true,
-                          progress: undefined,
-                          theme: "dark",
-                        })
-                      )
-                    }
-                    src="/Корзина.svg"
-                  />
+                  <img onClick={() => deletePr(post.id)} src="/Корзина.svg" />
                 </p>
               </div>
             ))}
