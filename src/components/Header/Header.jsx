@@ -13,7 +13,7 @@ const Header = () => {
       </div>
       <div className="logOut">
         <img src="/back.svg" alt="" />
-        <Link to={"/Login"}>
+        <Link to={"/"}>
           <h4>Выйти</h4>
         </Link>
       </div>

@@ -11,7 +11,7 @@ const SideBar = () => {
       <Link to={"/Home"}>
         <img className="sidebarImgs" src="/setting.svg" alt="setting" />
       </Link>
-      <Link to={"/Login"}>
+      <Link to={"/"}>
         <img className="sidebarImgs" src="/user.svg" alt="user" />
       </Link>
       <Link to={"/AddCart"}>

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Home.scss";
 import { Button, Form, InputGroup, NavLink } from "react-bootstrap";
-import Table from "react-bootstrap/Table";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -27,7 +28,9 @@ const Home = () => {
       console.log(err);
     }
   };
+  // ///////////////////////////
 
+  // ///////////////////////////
   useEffect(() => {
     const fetchAllPosts = async () => {
       try {
@@ -56,19 +59,27 @@ const Home = () => {
       window.location.reload();
     }, 1050);
   }
-
+  // ///////////////////////////////////////
+  const Filter = (event) => {
+    setPosts(
+      posts.filter((f) => f.name.toLowerCase().includes(event.target.value))
+    );
+  };
+  // ///////////////////////////////////////
   return (
     <section className="home-section">
       <div className="container-home">
         <div className="home-content">
           <div className="info-content">
             <h1>Все товары (7)</h1>
+            <ToastContainer />
             <Form.Control
               className="search-form"
               type="text"
               placeholder="Seach..."
               aria-label="Username"
               aria-describedby="basic-addon1"
+              onChange={Filter}
             />
           </div>
           <div className="all-product">
@@ -90,7 +101,7 @@ const Home = () => {
                   id="flexCheckDefault"
                 />
                 <Link to={`/Details/${post.id}`}>
-                  <p className="b-item2">Товар:{post.id}</p>
+                  <p className="b-item2">{post.name}</p>
                 </Link>
                 <Link to={`/Details/${post.id}`}>
                   <p className="b-item3">{post.code}</p>
@@ -106,8 +117,27 @@ const Home = () => {
                 </Link>
 
                 <p className="b-item7">
-                  <img src="/Редактировать.svg" alt="" />
-                  <img onClick={() => deletePr(post.id)} src="/Корзина.svg" />
+                  <Link to={`/EditCart/${post.id}`}>
+                    <img src="/Редактировать.svg" alt="" />
+                  </Link>
+                  <img
+                    onClick={() =>
+                      deletePr(
+                        post.id,
+                        toast("🗑️ удаляем!", {
+                          position: "bottom-right",
+                          autoClose: 5000,
+                          hideProgressBar: false,
+                          closeOnClick: true,
+                          pauseOnHover: true,
+                          draggable: true,
+                          progress: undefined,
+                          theme: "dark",
+                        })
+                      )
+                    }
+                    src="/Корзина.svg"
+                  />
                 </p>
               </div>
             ))}

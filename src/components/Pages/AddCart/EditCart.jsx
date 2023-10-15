@@ -1,27 +1,39 @@
-import { Button, Form, InputGroup } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
 import "./AddCart.scss";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { Button, Form, InputGroup } from "react-bootstrap";
 
-const AddCart = () => {
+const Edit = () => {
+  // const [data, setData] = useState([]);
+  const { id } = useParams();
   const [values, setValues] = useState({
     name: "",
     brand: "",
     code: "",
-    description: "",
+    comment: "",
     price: "",
     priceSale: "",
   });
-  const handleSubmit = async (event) => {
+
+  useEffect(() => {
+    axios
+      .get("https://64dcf61be64a8525a0f76c4d.mockapi.io/api/v1/products/" + id)
+      .then((res) => {
+        setValues(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleEdit = async (event) => {
     event.preventDefault();
-    toHome("/home");
     try {
-      const res = await axios.post(
-        `https://64dcf61be64a8525a0f76c4d.mockapi.io/api/v1/products`,
+      const res = await axios.put(
+        "https://64dcf61be64a8525a0f76c4d.mockapi.io/api/v1/products/" + id,
         values
       );
       console.log(res);
+      toHome("/Home");
     } catch (err) {
       console.log(err);
     }
@@ -31,10 +43,10 @@ const AddCart = () => {
     <section className="addCart-section">
       <div className="container-ad">
         <div className="add-content">
-          <p className="p1">Основные</p>
+          <button className="p1">Основные</button>
           <div className="inputs">
             <div className="top-inputs">
-              <Form className="form" onSubmit={handleSubmit}>
+              <Form className="form" onSubmit={handleEdit}>
                 <InputGroup size="lg">
                   <InputGroup.Text id="inputGroup-sizing-lg">
                     Название *
@@ -44,6 +56,7 @@ const AddCart = () => {
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
                     required
+                    value={values.name}
                     onChange={(e) =>
                       setValues({ ...values, name: e.target.value })
                     }
@@ -59,6 +72,7 @@ const AddCart = () => {
                     className="brend-input-group"
                     name="brand"
                     required
+                    value={values.brand}
                     onChange={(e) =>
                       setValues({ ...values, brand: e.target.value })
                     }
@@ -71,6 +85,7 @@ const AddCart = () => {
                     aria-describedby="inputGroup-sizing-sm"
                     name="code"
                     required
+                    value={values.code}
                     onChange={(e) =>
                       setValues({ ...values, code: e.target.value })
                     }
@@ -83,12 +98,12 @@ const AddCart = () => {
                     aria-label="With textarea"
                     name="comment"
                     required
+                    value={values.description}
                     onChange={(e) =>
                       setValues({ ...values, description: e.target.value })
                     }
                   />
                 </InputGroup>
-
                 <InputGroup size="lg">
                   <InputGroup.Text id="inputGroup-sizing-lg">
                     Цена
@@ -99,6 +114,7 @@ const AddCart = () => {
                     name="price"
                     className="brend-input-group"
                     required
+                    value={values.price}
                     onChange={(e) =>
                       setValues({ ...values, price: e.target.value })
                     }
@@ -110,12 +126,20 @@ const AddCart = () => {
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
                     name="priceSale"
+                    value={values.priceSale}
                     onChange={(e) =>
                       setValues({ ...values, priceSale: e.target.value })
                     }
                   />
                 </InputGroup>
-                <button className="Save-btn btn btn-success">save</button>
+                <div className="btns">
+                  <button
+                    className="Save-btn btn btn-success mx-1"
+                    type="submit"
+                  >
+                    Edit
+                  </button>
+                </div>
               </Form>
             </div>
           </div>
@@ -132,4 +156,4 @@ const AddCart = () => {
   );
 };
 
-export default AddCart;
+export default Edit;
