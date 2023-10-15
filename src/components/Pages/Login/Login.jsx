@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Login.scss";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   return (
@@ -41,11 +43,15 @@ const Login = () => {
           />
         </InputGroup>
         <Link to={"/Home"}>
-          <button className="w-25 submit btn btn-primary btn-outline-primary">
+          <button
+            onClick={notify}
+            className="w-100 submit btn btn-primary btn-primary"
+          >
             login
           </button>
         </Link>
       </Form>
+      <ToastContainer />
     </section>
   );
 };
