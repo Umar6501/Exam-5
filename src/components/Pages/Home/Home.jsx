@@ -11,7 +11,7 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
   // PAGINATION
-  let limit = 10;
+  let limit = 6;
   let numOfpages = Math.ceil(allPosts.length / limit);
   let arrBtns = [];
   for (let i = 1; i <= numOfpages; i++) {
